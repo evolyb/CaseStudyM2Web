@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PLAYER LIST</title>
+</head>
+<body>
+<a href="/">Home</a>
+<br>
+<a href="/players/create">Create new Player</a>
+<h1>PLAYERS</h1>
+<!--<form>-->
+<!--    Search by first name:-->
+<!--    <input name="s" type="text"/>-->
+<!--    <input type="submit" value="Search"/>-->
+<!--</form><br/>-->
+<table border="1">
+    <tr>
+        <th>Identity</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Team</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <th:block th:each="player : ${players}">
+        <tr>
+            <td th:text="${player.identity}"></td>
+            <td th:text="${player.name}"></td>
+            <td th:text="${player.position.name}"></td>
+            <td> <a th:text="*{player.team.name}" th:href="@{/teams/info/__*{player.team.id}__}"></a></td>
+            <td><a th:href="@{/players/edit/__${player.id}__ }">Edit</a></td>
+            <td><a th:href="@{/players/delete/__${player.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

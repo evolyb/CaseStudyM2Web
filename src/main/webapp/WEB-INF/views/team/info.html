@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Info</title>
+</head>
+<body>
+<p>
+    <a href="/players">Player list</a><br>
+    <a href="/teams">Team list</a>
+</p>
+<th:block th:object="${team}">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td th:field="*{id}" th:text="*{id}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td th:field="*{name}" th:text="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Stadium:</td>
+            <td th:field="*{stadium}" th:text="*{stadium}"></td>
+        </tr>
+        <tr>
+            <td>Coach:</td>
+            <td th:field="*{coach}" th:text="*{coach}"></td>
+        </tr>
+    </table>
+
+    <p>LIST PLAYERS</p>
+    <table border="1">
+        <tr>
+            <th>Identity</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Team</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <th:block th:each="player : ${players}">
+            <tr>
+                <td th:text="${player.identity}"></td>
+                <td th:text="${player.name}"></td>
+                <td th:text="${player.position.name}"></td>
+                <td th:text="${player.team.name}"></td>
+                <td><a th:href="@{/players/edit/__${player.id}__ }">Edit</a></td>
+                <td><a th:href="@{/players/delete/__${player.id}__ }">Delete</a></td>
+            </tr>
+        </th:block>
+    </table>
+</th:block>
+</body>
+</html>

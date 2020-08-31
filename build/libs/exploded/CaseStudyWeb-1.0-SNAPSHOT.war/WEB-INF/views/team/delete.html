@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Team</title>
+</head>
+<body>
+<h1>Delete Team</h1>
+<p>
+    <a href="/teams">Team list</a>
+</p>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/teams/delete}" th:object="${team}" method="post">
+    <table>
+        <tr>
+            <td><input  th:type="hidden" th:field="*{id}" th:value="*{id}"/></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td th:field="*{name}" th:text="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Stadium:</td>
+            <td th:field="*{stadium}" th:text="*{stadium}"></td>
+        </tr>
+        <tr>
+            <td>Coach:</td>
+            <td th:field="*{coach}" th:text="*{coach}"></td>
+        </tr>
+        <tr>Do you really want to delete it</tr>
+        <tr>
+            <td><input type="submit" value="Delete Team"></td>
+            <td><input type="button" onclick="window.location.href='/teams'" value="Cancel"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

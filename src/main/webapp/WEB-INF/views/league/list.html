@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create team</title>
+</head>
+<body>
+<p>
+    <a href="/teams">Team list</a>
+</p>
+<th:block th:object="${team}">
+<p th:value="${team.name}" th:text="${team.name}"></p>
+</th:block>
+</body>
+</html>
